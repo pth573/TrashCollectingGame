@@ -1,0 +1,144 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import javafx.scene.control.Button?>-->
+<!--<?import javafx.scene.control.Label?>-->
+<!--<?import javafx.scene.control.TextField?>-->
+<!--<?import javafx.scene.image.Image?>-->
+<!--<?import javafx.scene.image.ImageView?>-->
+<!--<?import javafx.scene.layout.AnchorPane?>-->
+<!--<?import javafx.scene.layout.HBox?>-->
+<!--<?import javafx.scene.layout.VBox?>-->
+<!--<?import javafx.scene.text.Font?>-->
+
+<!--<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gametrashcollecting.client.controller.RoomListViewController">-->
+<!--    <Label fx:id="user1" alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="161.0" prefHeight="47.0" prefWidth="282.0" style="-fx-font-weight: 100px;" text="FIND ROOM" textAlignment="CENTER">-->
+<!--        <font>-->
+<!--            <Font name="Elephant" size="30.0" />-->
+<!--        </font>-->
+<!--    </Label>-->
+<!--    <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="705.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">-->
+<!--        <image>-->
+<!--            <Image url="@../../../img/Thiết%20kế%20chưa%20có%20tên%20(1).png" />-->
+<!--        </image>-->
+<!--    </ImageView>-->
+<!--   <TextField layoutX="240.0" layoutY="220.0" prefHeight="47.0" prefWidth="333.0" style="-fx-padding: 0 30;" text="ID room">-->
+<!--      <font>-->
+<!--         <Font size="14.0" />-->
+<!--      </font>-->
+<!--   </TextField>-->
+<!--   <Button fx:id="startBtn1" layoutX="599.0" layoutY="219.0" mnemonicParsing="false" onAction="#clickOnStartBtn" prefHeight="47.0" prefWidth="164.0" style="-fx-background-color: #2b2b2b; -fx-font-size: 14;" text="SEARCH" textFill="#fffefe">-->
+<!--      <font>-->
+<!--         <Font size="14.0" />-->
+<!--      </font>-->
+<!--   </Button>-->
+<!--   <HBox layoutX="275.0" layoutY="309.0" prefHeight="125.0" prefWidth="446.0">-->
+<!--      <children>-->
+<!--         <VBox prefHeight="107.0" prefWidth="158.0">-->
+<!--            <children>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room Id: 1000">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room Name: Room 1">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Max Player: 2">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Current Player: 2">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room status: FULL">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Button fx:id="startBtn22" mnemonicParsing="false" onAction="#clickOnStartBtn" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #2b2b2b; -fx-font-size: 14;" text="Join" textFill="#fffefe">-->
+<!--                  <font>-->
+<!--                     <Font size="14.0" />-->
+<!--                  </font>-->
+<!--               </Button>-->
+<!--            </children>-->
+<!--         </VBox>-->
+<!--         <VBox layoutX="182.0" layoutY="10.0" prefHeight="107.0" prefWidth="158.0">-->
+<!--            <children>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room Id: 1000">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room Name: Room 1">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Max Player: 2">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Current Player: 2">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room status: FULL">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Button fx:id="startBtn221" mnemonicParsing="false" onAction="#clickOnStartBtn" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #2b2b2b; -fx-font-size: 14;" text="Join" textFill="#fffefe">-->
+<!--                  <font>-->
+<!--                     <Font size="14.0" />-->
+<!--                  </font>-->
+<!--               </Button>-->
+<!--            </children>-->
+<!--         </VBox>-->
+<!--         <VBox layoutX="168.0" layoutY="10.0" prefHeight="107.0" prefWidth="158.0">-->
+<!--            <children>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room Id: 1000">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room Name: Room 1">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Max Player: 2">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <AnchorPane prefHeight="200.0" prefWidth="560.0" />-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Current Player: 2">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Label prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 13;" text="Room status: FULL">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="12.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--               <Button fx:id="startBtn2211" mnemonicParsing="false" onAction="#clickOnStartBtn" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #2b2b2b; -fx-font-size: 14;" text="Join" textFill="#fffefe">-->
+<!--                  <font>-->
+<!--                     <Font size="14.0" />-->
+<!--                  </font>-->
+<!--               </Button>-->
+<!--            </children>-->
+<!--         </VBox>-->
+<!--      </children>-->
+<!--   </HBox>-->
+<!--   <AnchorPane layoutX="17.0" layoutY="331.0" prefHeight="110.0" prefWidth="154.0" />-->
+<!--</AnchorPane>-->
+
+

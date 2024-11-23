@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gametrashcollecting.client.controller.Game2Controller">
+    <children>
+        <!-- Vùng vẽ trò chơi -->
+        <Canvas fx:id="gameCanvas" layoutX="0.0" layoutY="0.0" width="800" height="600"/>
+
+        <!-- Hiển thị điểm -->
+        <Text fx:id="scoreText" layoutX="20.0" layoutY="40.0" text="SCORE: 0" style="-fx-font-size: 20px;"/>
+
+        <!-- Hiển thị sức khỏe -->
+        <Text fx:id="healthText" layoutX="20.0" layoutY="70.0" text="HEALTH: 100" style="-fx-font-size: 20px;"/>
+
+        <!-- Hiển thị Game Over -->
+        <Text fx:id="gameOverText" layoutX="320.0" layoutY="300.0" text="" style="-fx-font-size: 30px; -fx-font-weight: bold;"/>
+    </children>
+</AnchorPane>

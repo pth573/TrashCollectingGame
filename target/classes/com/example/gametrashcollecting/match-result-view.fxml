@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="36.0" layoutY="212.0" text="Minh" />
+      <Label layoutX="36.0" layoutY="347.0" text="Phúc" />
+      <ImageView fitHeight="95.0" fitWidth="71.0" layoutX="76.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Downloads/z5841280017222_7216585af1318c02c78bc64e8f972075.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="100.0" endY="-42.00001525878906" layoutX="67.0" layoutY="198.0" startX="100.0" startY="201.20001220703125" />
+      <Label contentDisplay="CENTER" layoutX="199.0" layoutY="111.0" prefHeight="46.0" prefWidth="89.0" text="Tổng" textAlignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8315789699554443" green="0.7391812801361084" blue="0.7391812801361084" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Line endX="100.0" endY="-42.00001525878906" layoutX="200.0" layoutY="204.0" startX="100.0" startY="201.20001220703125" />
+      <ImageView fitHeight="88.0" fitWidth="190.0" layoutX="321.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+      <Line endX="100.0" endY="-42.00001525878906" layoutX="427.0" layoutY="198.0" startX="100.0" startY="201.20001220703125" />
+      <ImageView fitHeight="88.0" fitWidth="190.0" layoutX="539.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="388.0" layoutY="116.0" text="ảnh map 1" />
+      <Label layoutX="602.0" layoutY="116.0" text="ảnh map 2" />
+      <Line endX="100.0" layoutX="416.0" layoutY="221.0" startX="-100.0" />
+      <TextField alignment="CENTER" layoutX="342.0" layoutY="169.0" text="945" />
+      <TextField layoutX="342.0" layoutY="236.0" text="TG bắt đầu - TG kết thúc" />
+      <Line endX="626.0999755859375" layoutX="137.0" layoutY="296.0" startX="-100.0" />
+      <TextField alignment="CENTER" layoutX="177.0" layoutY="217.0" prefHeight="18.0" prefWidth="112.0" text="1600">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField alignment="CENTER" layoutX="177.0" layoutY="334.0" prefHeight="18.0" prefWidth="112.0" text="1500">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <Line endX="100.0" layoutX="416.0" layoutY="356.0" startX="-100.0" />
+      <TextField alignment="CENTER" layoutX="342.0" layoutY="308.0" text="1000" />
+      <TextField layoutX="342.0" layoutY="374.0" text="TG bắt đầu - TG kết thúc" />
+      <TextField alignment="CENTER" layoutX="565.0" layoutY="168.0" text="655" />
+      <Line endX="100.0" layoutX="640.0" layoutY="218.0" startX="-100.0" />
+      <TextField layoutX="564.0" layoutY="236.0" text="TG bắt đầu - TG kết thúc" />
+      <TextField layoutX="565.0" layoutY="374.0" text="TG bắt đầu - TG kết thúc" />
+      <Line endX="100.0" layoutX="639.0" layoutY="355.0" startX="-100.0" />
+      <TextField alignment="CENTER" layoutX="558.0" layoutY="308.0" text="500" />
+      <Label layoutX="331.0" layoutY="34.0" text="Kết quả">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="95.0" fitWidth="71.0" layoutX="76.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Downloads/z5841280017222_7216585af1318c02c78bc64e8f972075.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

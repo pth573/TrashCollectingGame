@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.canvas.Canvas?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gametrashcollecting.GameController">
+    <top>
+        <VBox>
+            <Text fx:id="scoreText" text="SCORE: 0" />
+            <Text fx:id="healthText" text="HEALTH: 100" />
+            <Text fx:id="gameOverText" text="" />
+        </VBox>
+    </top>
+    <center>
+        <Canvas fx:id="gameCanvas" width="800" height="600" />
+    </center>
+</BorderPane>

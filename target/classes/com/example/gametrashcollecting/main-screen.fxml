@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gametrashcollecting.client.controller.MainScreenController">
+   <AnchorPane fx:id="userBox" layoutY="0.19999999999999996" prefHeight="700.0" prefWidth="209.0" style="-fx-background-color: #e4eef3;" AnchorPane.bottomAnchor="0.6000000000000227" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="791.2" AnchorPane.topAnchor="0.19999999999999996">
+      <children>
+         <VBox fx:id="userOnlineVbox" layoutX="32.0" layoutY="92.0" prefHeight="126.0" prefWidth="150.0" style="-fx-background-color: #e4eef3;">
+            <children>
+               <Label fx:id="usename" prefHeight="18.0" prefWidth="167.0" text="User 1" />
+               <Label fx:id="userStatus" alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="136.0" style="-fx-background-color: #d4d4d4; -fx-font-size: 11; -fx-padding: 0 5;" text="Offline (32 phút trước)" textAlignment="CENTER" textFill="#9e9e9e" />
+               <Label text="User 2" />
+               <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="136.0" style="-fx-background-color: #d4d4d4; -fx-font-size: 11; -fx-padding: 0 5;" text="Online" textFill="#208c12" />
+               <Label text="User 3" />
+               <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="136.0" style="-fx-background-color: #d4d4d4; -fx-font-size: 11; -fx-padding: 0 5;" text="Playing" textFill="#862727" />
+            </children>
+         </VBox>
+         <Label layoutX="67.0" layoutY="51.0" style="-fx-font-size: 16;" text="User online">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+   <ImageView fx:id="rank" fitHeight="31.0" fitWidth="43.0" layoutX="931.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/Thiết%20kế%20chưa%20có%20tên%20-%20Copy%20(2).png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="userInfo" fitHeight="28.0" fitWidth="31.0" layoutX="934.0" layoutY="587.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/Thiết%20kế%20chưa%20có%20tên%20-%20Copy.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="history" fitHeight="35.0" fitWidth="31.0" layoutX="932.0" layoutY="536.0" onMouseClicked="#showHistorySession" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/Thiết%20kế%20chưa%20có%20tên.png" />
+      </image>
+   </ImageView>
+      <Button fx:id="createRoom" layoutX="700.0" layoutY="583.0" mnemonicParsing="false" onAction="#clickOnToCreateRoomBtn" prefHeight="47.0" prefWidth="164.0" style="-fx-background-color: #2b2b2b; -fx-font-size: 14;" text="Tạo phòng" textFill="#fffefe">
+          <font>
+              <Font size="14.0" />
+          </font>
+   </Button>
+   <ImageView fx:id="userImg" fitHeight="261.0" fitWidth="164.0" layoutX="345.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/user.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="friend" fitHeight="28.0" fitWidth="31.0" layoutX="933.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/map%20-%20Copy.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="84.0" fitWidth="102.0" layoutX="753.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/rank%20-%20Copy%20(2).png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="704.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/Thiết%20kế%20chưa%20có%20tên%20(1)%20-%20Copy%20-%20Copy.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="703.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/Thiết%20kế%20chưa%20có%20tên%20(1)%20-%20Copy.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="705.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/Thiết%20kế%20chưa%20có%20tên%20(2)%20-%20Copy%20-%20Copy%20-%20Copy.png" />
+      </image>
+   </ImageView>
+   <Label fx:id="top1" layoutX="769.0" layoutY="221.0" prefHeight="20.0" prefWidth="123.0" style="-fx-font-size: 14; -fx-font-family: Elephant;" text="User Top 1">
+      <font>
+         <Font name="Britannic Bold" size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="top2" layoutX="770.0" layoutY="275.0" prefHeight="20.0" prefWidth="123.0" style="-fx-font-size: 14; -fx-font-family: Elephant;" text="User Top 2">
+      <font>
+         <Font name="Britannic Bold" size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="top3" layoutX="771.0" layoutY="332.0" prefHeight="20.0" prefWidth="123.0" style="-fx-font-size: 14; -fx-font-family: Elephant;" text="User Top 3">
+      <font>
+         <Font name="Britannic Bold" size="12.0" />
+      </font>
+   </Label>
+   <Button fx:id="findRoom" layoutX="700.0" layoutY="524.0" mnemonicParsing="false" onAction="#clickOnFindRoomBtn" prefHeight="44.0" prefWidth="102.0" style="-fx-background-color: #2b2b2b; -fx-font-size: 14;" text="Tìm phòng" textFill="#fffefe">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+
+
+<!--   <AnchorPane fx:id="findRoomDialog" layoutX="300.0" layoutY="200.0" prefHeight="250.0" prefWidth="400.0" visible="false" style="-fx-background-color: #808080; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 2, 2);">-->
+<!--      <children>-->
+<!--         <VBox alignment="CENTER" spacing="15.0" style="-fx-padding: 20;">-->
+<!--            &lt;!&ndash; TextField &ndash;&gt;-->
+<!--            <TextField fx:id="roomIdField" promptText="Nhập ID phòng" prefWidth="250.0" style="-fx-font-size: 14; -fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #888888; -fx-border-radius: 5;" />-->
+
+<!--            &lt;!&ndash; Button: Find Room &ndash;&gt;-->
+<!--            <Button text="Tìm phòng" onAction="#findRoom" prefWidth="100.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 5; -fx-hover-color: #45a049;" />-->
+
+<!--            &lt;!&ndash; Button: Close &ndash;&gt;-->
+<!--            <Button text="Tắt" onAction="#closeDialog" prefWidth="100.0" style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 5; -fx-hover-color: #d32f2f;" />-->
+<!--         </VBox>-->
+<!--      </children>-->
+<!--   </AnchorPane>-->
+
+
+
+
+
+
+   <ImageView fx:id="inviteFriend" fitHeight="35.0" fitWidth="38.0" layoutX="816.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../img/invite_friend.png" />
+      </image>
+   </ImageView>
+   <Label fx:id="userNameClient" alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="159.0" prefHeight="47.0" prefWidth="209.0" style="-fx-font-weight: 100px;" text="Hello USER 1!" textAlignment="CENTER">
+      <font>
+         <Font name="Elephant" size="18.0" />
+      </font>
+   </Label>
+</AnchorPane>
