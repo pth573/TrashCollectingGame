@@ -67,7 +67,6 @@ public class UserController {
 
     @FXML
     public void initialize() {
-        // Cấu hình cột với thuộc tính trong lớp User
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         totalPointsColumn.setCellValueFactory(new PropertyValueFactory<>("totalPoints"));
@@ -75,15 +74,12 @@ public class UserController {
         lastLoginColumn.setCellValueFactory(new PropertyValueFactory<>("lastLogin"));
         currentRoomIdColumn.setCellValueFactory(new PropertyValueFactory<>("currentRoomId"));
 
-        // Thiết lập ObservableList cho bảng
         FilteredList<User> filteredData = new FilteredList<>(userData, p -> true);
         SortedList<User> sortedData = new SortedList<>(filteredData);
 
-        // Liên kết dữ liệu đã sắp xếp với TableView
         sortedData.comparatorProperty().bind(userTable.comparatorProperty());
         userTable.setItems(sortedData);
 
-        // Đặt thứ tự mặc định là cột tổng điểm giảm dần
         totalPointsColumn.setSortType(TableColumn.SortType.DESCENDING);
         userTable.getSortOrder().add(totalPointsColumn);
     }

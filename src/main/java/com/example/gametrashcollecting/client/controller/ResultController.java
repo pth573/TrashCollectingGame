@@ -153,16 +153,13 @@ public class ResultController {
 
     public void initialize() {
         minuteContinueLbl.setText("Waiting " + minuteContinue + " s to continue...");
-
         countdown = new Timeline(
                 new KeyFrame(Duration.seconds(1), event -> {
                     minuteContinue--;
                     minuteContinueLbl.setText("Waiting " + minuteContinue + " s to continue...");
-
                     if (minuteContinue <= 0) {
                         System.out.println("Đã hết thời gian.");
                         countdown.stop();
-
                         try {
                             loadShowScorePage();
                         } catch (IOException e) {
@@ -175,8 +172,6 @@ public class ResultController {
         countdown.setCycleCount(Timeline.INDEFINITE);
         countdown.play();
     }
-
-
 
     public void initial(){
         maxScoreSessionUser1Lbl.setEditable(false);

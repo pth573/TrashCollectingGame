@@ -51,9 +51,8 @@ public class RoundController {
 
         List<Object> list;
         if (dataFromClient instanceof List<?>) {
-            list = (List<Object>) dataFromClient;  // Chuyển đổi nếu chắc chắn là List
+            list = (List<Object>) dataFromClient;
         } else {
-            // Nếu không phải là List, có thể thêm xử lý lỗi hoặc hành động khác
             list = new ArrayList<>();
         }
 

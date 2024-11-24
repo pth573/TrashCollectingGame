@@ -130,12 +130,12 @@ public class GameSessionController {
             // Tạo thêm 50 TrashItem mới
             List<TrashItem> newTrashItems = new ArrayList<>();
             Random random = new Random();
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < 100; i++) {
                 // Chọn ngẫu nhiên một TrashItem từ danh sách đã có
                 TrashItem baseTrashItem = trashItemList.get(random.nextInt(trashItemList.size()));
 
                 // Sinh ngẫu nhiên tọa độ x, y
-                double x = random.nextDouble() * 550; // Giả sử chiều rộng 800
+                double x = random.nextDouble() * 540; // Giả sử chiều rộng 800
                 double y = random.nextDouble() * 750; // Giả sử chiều cao 600
 
                 // Tạo TrashItem mới với thuộc tính giống baseTrashItem
@@ -189,19 +189,6 @@ public class GameSessionController {
         if (dataFromClient instanceof List) {
             List<?> outerList = (List<?>) dataFromClient;
             System.out.println("List data updatePoint from client:" + outerList.size());
-//            Object secondElement = outerList.get(1);
-//            if (secondElement instanceof User) {
-//                userJoinRoom = (User) secondElement;
-//            } else {
-//                userJoinRoom = new User();
-//            }
-//            Object thirdElement = outerList.get(2);
-//            if (thirdElement instanceof User) {
-//                userCreateRoom = (User) thirdElement;
-//            } else {
-//                userCreateRoom = new User();
-//            }
-
             Object secondElement = outerList.get(1);
             if (secondElement instanceof User) {
                 userCreateRoom = (User) secondElement;
@@ -250,10 +237,66 @@ public class GameSessionController {
             clientOther.getOos().writeObject(responseStatus);
             return new ResponseStatus(Status.OTHER, "");
         }
-//        Client clientOther = ClientManager.getInstance().getClient(thisUser.getUsername());
+    }
 
-//        ResponseStatus responseStatus = new ResponseStatus(Status.START_GAME_UPDATE_CLIENT_2_SUCCESS, dataFromClient);
-//        return responseStatus;
+
+    public static ResponseStatus updateScoreUI_1(Object dataFromClient, Client client, Map<String, Client> clientMap) throws Exception {
+        System.out.println("44444444");
+
+
+        User userCreateRoom = null;
+        User userJoinRoom = null;
+        User thisUser = null;
+        Integer score = 0;
+
+        if (dataFromClient instanceof List) {
+            List<?> outerList = (List<?>) dataFromClient;
+
+            Object secondElement = outerList.get(0);
+            if (secondElement instanceof User) {
+                userCreateRoom = (User) secondElement;
+            } else {
+                userCreateRoom = new User();
+            }
+            System.out.println("1: " + userCreateRoom);
+
+            Object thirdElement = outerList.get(1);
+            if (thirdElement instanceof User) {
+                userJoinRoom = (User) thirdElement;
+            } else {
+                userJoinRoom = new User();
+            }
+            System.out.println("2: " + userJoinRoom);
+
+            Object seventh = outerList.get(2);
+            if (seventh instanceof User) {
+                thisUser = (User) seventh;
+            } else {
+                thisUser = new User();
+            }
+            System.out.println("5: " + thisUser);
+
+            Object x = outerList.get(3);
+            if(x instanceof Integer) {
+                score =  (Integer) x;
+            }
+        }
+
+        System.out.println("SC: " + score);
+        if(thisUser.getUsername().equals(userCreateRoom.getUsername())) {
+            System.out.println("11111");
+            Client clientOther = ClientManager.getInstance().getClient(userJoinRoom.getUsername());
+            ResponseStatus responseStatus = new ResponseStatus(Status.UPDATE_SCORE_UI_1_SUCCESS, dataFromClient);
+            clientOther.getOos().writeObject(responseStatus);
+            return new ResponseStatus(Status.OTHER, "");
+        }
+        else {
+            System.out.println("2222");
+            Client clientOther = ClientManager.getInstance().getClient(userCreateRoom.getUsername());
+            ResponseStatus responseStatus = new ResponseStatus(Status.UPDATE_SCORE_UI_1_SUCCESS, dataFromClient);
+            clientOther.getOos().writeObject(responseStatus);
+            return new ResponseStatus(Status.OTHER, "");
+        }
     }
 
     public static ResponseStatus updateScoreUI(Object dataFromClient, Client client, Map<String, Client> clientMap) throws Exception {
@@ -316,8 +359,6 @@ public class GameSessionController {
     }
 
     public static ResponseStatus updateTrashUI(Object dataFromClient, Client client, Map<String, Client> clientMap) throws IOException {
-//        System.out.println("Hiii3");
-
         User userCreateRoom = null;
         User userJoinRoom = null;
         User thisUser = null;

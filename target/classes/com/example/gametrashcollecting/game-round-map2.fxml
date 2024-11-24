@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gametrashcollecting.client.controller.StartGameController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gametrashcollecting.client.controller.StartGame2Controller">
     <ImageView fx:id="imgUser1" fitHeight="172.0" fitWidth="164.0" layoutX="843.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../img/user.png" />
@@ -61,64 +61,33 @@
         </font>
     </Label>
    <Line endX="745.5999755859375" endY="0.149993896484375" layoutX="275.0" layoutY="368.0" startX="281.0" startY="0.149993896484375" />
-   <ImageView fitHeight="95.0" fitWidth="260.0" layoutX="584.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../../img/thungrac.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="95.0" fitWidth="260.0" layoutX="581.0" layoutY="589.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../../img/thungrac.png" />
-      </image>
-   </ImageView>
-   <Label fx:id="organic2" alignment="CENTER" contentDisplay="CENTER" layoutX="589.0" layoutY="158.0" prefHeight="47.0" prefWidth="55.0" style="-fx-font-weight: 100px;" text="1" textAlignment="CENTER">
-      <font>
-         <Font name="Elephant" size="30.0" />
-      </font>
-   </Label>
-   <Label fx:id="plastic2" alignment="CENTER" contentDisplay="CENTER" layoutX="655.0" layoutY="158.0" prefHeight="47.0" prefWidth="55.0" style="-fx-font-weight: 100px;" text="2" textAlignment="CENTER">
-      <font>
-         <Font name="Elephant" size="30.0" />
-      </font>
-   </Label>
-   <Label fx:id="metal2" alignment="CENTER" contentDisplay="CENTER" layoutX="721.0" layoutY="158.0" prefHeight="47.0" prefWidth="55.0" style="-fx-font-weight: 100px;" text="3" textAlignment="CENTER">
-      <font>
-         <Font name="Elephant" size="30.0" />
-      </font>
-   </Label>
-   <Label fx:id="paper2" alignment="CENTER" contentDisplay="CENTER" layoutX="783.0" layoutY="158.0" prefHeight="47.0" prefWidth="55.0" style="-fx-font-weight: 100px;" text="4" textAlignment="CENTER">
-      <font>
-         <Font name="Elephant" size="30.0" />
-      </font>
-   </Label>
-   <Label fx:id="organic1" alignment="CENTER" contentDisplay="CENTER" layoutX="586.0" layoutY="529.0" prefHeight="47.0" prefWidth="55.0" style="-fx-font-weight: 100px;" text="1" textAlignment="CENTER">
-      <font>
-         <Font name="Elephant" size="30.0" />
-      </font>
-   </Label>
-   <Label fx:id="plastic1" alignment="CENTER" contentDisplay="CENTER" layoutX="652.0" layoutY="529.0" prefHeight="47.0" prefWidth="55.0" style="-fx-font-weight: 100px;" text="2" textAlignment="CENTER">
-      <font>
-         <Font name="Elephant" size="30.0" />
-      </font>
-   </Label>
-   <Label fx:id="metal1" alignment="CENTER" contentDisplay="CENTER" layoutX="718.0" layoutY="529.0" prefHeight="47.0" prefWidth="55.0" style="-fx-font-weight: 100px;" text="3" textAlignment="CENTER">
-      <font>
-         <Font name="Elephant" size="30.0" />
-      </font>
-   </Label>
-   <Label fx:id="paper1" alignment="CENTER" contentDisplay="CENTER" layoutX="780.0" layoutY="530.0" prefHeight="47.0" prefWidth="55.0" style="-fx-font-weight: 100px;" text="4" textAlignment="CENTER">
-      <font>
-         <Font name="Elephant" size="30.0" />
-      </font>
-   </Label>
    <Pane fx:id="gamePane" layoutX="-2.0">
       <children>
          <ImageView fx:id="background" fitHeight="758.0" fitWidth="558.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../img/map2.jpg" />
+               <Image url="@../../../img/map1_pixel%20-%20Copy%20(2).jpg" />
             </image>
          </ImageView>
-         <Line fx:id="redLine" endX="450.5289306640625" layoutX="102.0" layoutY="482.0" startX="-100.0" stroke="RED" strokeWidth="10.0" />
+         <ImageView fx:id="thungHuuCo" fitHeight="106.0" fitWidth="99.0" layoutX="32.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../img/thung1.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="thungNhua" fitHeight="106.0" fitWidth="107.0" layoutX="155.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../img/thung2.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="thungKimLoai" fitHeight="109.0" fitWidth="107.0" layoutX="290.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../img/thung3.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="thungGiay" fitHeight="106.0" fitWidth="99.0" layoutX="417.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../img/thung4.png" />
+            </image>
+         </ImageView>
       </children>
    </Pane>
    <Label fx:id="pointUser1" layoutX="585.0" layoutY="475.0" prefHeight="18.0" prefWidth="164.0" style="-fx-font-size: 20;" text="POINT: 4">

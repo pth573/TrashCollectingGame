@@ -2,6 +2,7 @@ package com.example.gametrashcollecting.server.controller;
 
 import com.example.gametrashcollecting.model.Client;
 import com.example.gametrashcollecting.model.User;
+import com.example.gametrashcollecting.model.UserStatus;
 import com.example.gametrashcollecting.server.dao.FriendshipDAO;
 import com.example.gametrashcollecting.server.dao.UserDAO;
 import com.example.gametrashcollecting.server.statusReponse.ResponseStatus;

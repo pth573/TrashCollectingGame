@@ -115,7 +115,7 @@
       <children>
          <ImageView fx:id="background" fitHeight="758.0" fitWidth="558.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../img/map1_pixel%20-%20Copy%20(2).jpg" />
+               <Image url="@../../../img/map2.jpg" />
             </image>
          </ImageView>
          <Line fx:id="redLine" endX="450.5289306640625" layoutX="102.0" layoutY="482.0" startX="-100.0" stroke="RED" strokeWidth="10.0" />

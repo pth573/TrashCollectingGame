@@ -218,7 +218,7 @@ public class StartGameController {
         GameSessionPlayer gameSessionPlayerCreate;
         GameSessionPlayer gameSessionPlayerJoin;
         List<TrashItem> trashItemList = new ArrayList<>();
-//
+
         if(dataToClient2 instanceof List<?>){
             List<Object> outerList = (List<Object>) dataToClient2;
             Object firstElement = outerList.get(0);
@@ -280,7 +280,7 @@ public class StartGameController {
 
                 System.out.println("SEND REQUEST UPDATE_SCORE_UI");
                 System.out.println("SC1: " + scoreUser1);
-                Request request = new Request(RequestStatus.UPDATE_SCORE_UI, data);
+                Request request = new Request(RequestStatus.UPDATE_SCORE_UI_1, data);
                 System.out.println("REQUEST TO SERVER UPDATE_SCORE_UI: " + request);
                 client.sendToServer(request);
 
@@ -295,7 +295,7 @@ public class StartGameController {
                 pointUser2.setText(String.valueOf(scoreUser2));
                 System.out.println("SC2: " + scoreUser2);
                 System.out.println("SEND REQUEST UPDATE_SCORE_UI");
-                Request request = new Request(RequestStatus.UPDATE_SCORE_UI, data);
+                Request request = new Request(RequestStatus.UPDATE_SCORE_UI_1, data);
                 System.out.println("REQUEST TO SERVER UPDATE_SCORE_UI: " + request);
                 client.sendToServer(request);
             }
@@ -311,8 +311,6 @@ public class StartGameController {
     }
 
     public void updateUIStartGame() throws IOException {
-//        scoreUser1 = 0;
-//        scoreUser2 = 0;
         if(session.getRound().getDifficulLevel().equals(Level.EASY)){
             remainingTime = session.getRound().getTimeLimit();
         }
@@ -322,70 +320,10 @@ public class StartGameController {
         else {
             remainingTime = session.getRound().getTimeLimit() - 5;
         }
-//        remainingTime = session.getRound().getTimeLimit();
         updateRoomUI();
         updatePoint();
         updateUserUI();
         spawnNextTrash();
-//        updateTrashUI();
-    }
-
-    private void loadShowScorePage() throws IOException {
-        System.out.println("Thời gian đã hết. Chuyển sang trang mới.");
-        List<Object> data = new ArrayList<>();
-        LocalDateTime currentTime = LocalDateTime.now();
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedTime = currentTime.format(formatter);
-        session.setEndTime(formattedTime);
-        gameSessionPlayerCreate.setScore(scoreUser1);
-        gameSessionPlayerJoin.setScore(scoreUser2);
-        data.add(session);
-        data.add(gameSessionPlayerCreate);
-        data.add(gameSessionPlayerJoin);
-//        data.add(thisUser);
-        Request request = new Request(RequestStatus.SHOW_SCORE_USER, data);
-        System.out.println("REQUEST TO SERVER SHOW_SCORE_USER: " + request);
-        client.sendToServer(request);
-
-    }
-
-
-    private Timeline countdown;
-
-    public void initialize() {
-        labelMap.put("organic1", organic1);
-        labelMap.put("plastic1", plastic1);
-        labelMap.put("metal1", metal1);
-        labelMap.put("paper1", paper1);
-
-        labelMap.put("organic2", organic2);
-        labelMap.put("plastic2", plastic2);
-        labelMap.put("metal2", metal2);
-        labelMap.put("paper2", paper2);
-
-        timeRemain.setText(remainingTime + "s");
-
-        countdown = new Timeline(
-                new KeyFrame(Duration.seconds(1), event -> {
-                    remainingTime--;
-                    timeRemain.setText(remainingTime + "s");
-
-                    if (remainingTime <= 0) {
-                        System.out.println("Đã hết thời gian.");
-                        countdown.stop();
-
-                        try {
-                            loadShowScorePage();
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                })
-        );
-
-        countdown.setCycleCount(Timeline.INDEFINITE);
-        countdown.play();
     }
 
 
@@ -600,7 +538,7 @@ public class StartGameController {
         }
 
         currentFallingTrash = null;
-        spawnNextTrash(); // Bắt đầu rác mới rơi
+        spawnNextTrash(); // Bắt đầu rác mới
     }
 
     public void removeTrashFromPane() {
@@ -693,46 +631,6 @@ public class StartGameController {
     }
 
 
-    // lấy rác trong DB
-    public void spawnNextTrash() {
-        order++;
-        if (!trashItemList.isEmpty()) {
-            currentFallingTrash = trashItemList.get(order);
-            System.out.println("Trash: " + currentFallingTrash.getItemType());
-
-            trashOrderLabel.setText("Trash #" + order);
-            trashOrderLabel.setStyle("-fx-font-size: 16; -fx-text-fill: white;");
-
-            if (!gamePane.getChildren().contains(trashOrderLabel)) {
-                gamePane.getChildren().add(trashOrderLabel);
-            }
-
-            if (currentFallingTrash.getVy() == 0) {
-                currentFallingTrash.setVy(0.1);
-            }
-
-            startTrashFallAnimation();
-        }
-    }
-
-
-//    public void spawnNextTrash() {
-//        order++;
-//        if (!trashItemList.isEmpty()) {
-//            currentFallingTrash = trashItemList.get(order);
-//            System.out.println("Trash: " + currentFallingTrash.getItemType());
-//
-//            // Cập nhật và hiển thị số thứ tự của rác
-//            trashOrderLabel.setText("Trash #" + order); // Đặt số thứ tự
-//            trashOrderLabel.setStyle("-fx-font-size: 16; -fx-text-fill: white;");
-//
-//            if (!gamePane.getChildren().contains(trashOrderLabel)) {
-//                gamePane.getChildren().add(trashOrderLabel);
-//            }
-//            startTrashFallAnimation();
-//        }
-//    }
-
     public void updateTrashUI() throws IOException {
         GameSession gameSession;
         User userCreateRoom = null;
@@ -802,6 +700,72 @@ public class StartGameController {
         trashView.setLayoutX(trashItem.getX());
         trashView.setLayoutY(trashItem.getY());
     }
+    private AnimationTimer currentAnimationTimer;
+    private Timeline countdown;
+
+    public void initialize() {
+        labelMap.put("organic1", organic1);
+        labelMap.put("plastic1", plastic1);
+        labelMap.put("metal1", metal1);
+        labelMap.put("paper1", paper1);
+
+        labelMap.put("organic2", organic2);
+        labelMap.put("plastic2", plastic2);
+        labelMap.put("metal2", metal2);
+        labelMap.put("paper2", paper2);
+
+        timeRemain.setText(remainingTime + "s");
+
+        countdown = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> {
+                    remainingTime--;
+                    timeRemain.setText(remainingTime + "s");
+
+                    if (remainingTime <= 0) {
+                        System.out.println("Đã hết thời gian.");
+                        countdown.stop();
+                        stopCurrentAnimation();
+
+                        try {
+                            loadShowScorePage();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                })
+        );
+
+        countdown.setCycleCount(Timeline.INDEFINITE);
+        countdown.play();
+    }
+
+    private void stopCurrentAnimation() {
+        if (currentAnimationTimer != null) {
+            currentAnimationTimer.stop();
+            currentAnimationTimer = null;
+        }
+    }
+
+    public void spawnNextTrash() {
+        order++;
+        if (!trashItemList.isEmpty() && order < trashItemList.size()) {
+            currentFallingTrash = trashItemList.get(order);
+            System.out.println("Trash: " + currentFallingTrash.getItemType());
+
+            trashOrderLabel.setText("Trash #" + order);
+            trashOrderLabel.setStyle("-fx-font-size: 16; -fx-text-fill: white;");
+
+            if (!gamePane.getChildren().contains(trashOrderLabel)) {
+                gamePane.getChildren().add(trashOrderLabel);
+            }
+
+            if (currentFallingTrash.getVy() == 0) {
+                currentFallingTrash.setVy(0.1);
+            }
+
+            startTrashFallAnimation();
+        }
+    }
 
     private void cleanupGamePane() {
         System.out.println("Dọn dẹp giao diện game.");
@@ -809,122 +773,84 @@ public class StartGameController {
         currentFallingTrash = null;
     }
 
-
+    // Animation rác rơi
     private void startTrashFallAnimation() {
-        System.out.println("TRAASSH1: " + currentFallingTrash);
+        stopCurrentAnimation();
 
-        currentFallingTrash.setVy(0.1);
+        System.out.println("Tạo Animation cho Trash: " + currentFallingTrash);
 
         trashView = new ImageView(new Image(getClass().getResource(currentFallingTrash.getImg()).toString()));
-        trashView.setFitWidth(30);
-        trashView.setFitHeight(30);
+        trashView.setFitWidth(45);
+        trashView.setFitHeight(45);
         trashView.setLayoutX(currentFallingTrash.getX());
         trashView.setLayoutY(currentFallingTrash.getY());
         trashOrderLabel.setLayoutX(currentFallingTrash.getX() - (Math.abs(trashView.getFitWidth() - trashOrderLabel.getWidth())) / 2);
 
-        currentFallingTrash.setX(currentFallingTrash.getX());
-        currentFallingTrash.setY(0); // Đặt lại vị trí Y về 0
+        currentFallingTrash.setY(0);
 
         if (!gamePane.getChildren().contains(trashView)) {
             trashView.setId(String.valueOf(order));
             gamePane.getChildren().add(trashView);
         }
-        new AnimationTimer() {
+
+        currentAnimationTimer = new AnimationTimer() {
             private boolean hasReachedGround = false;
 
             @Override
             public void handle(long now) {
-                synchronized (this) {
-                    if (remainingTime <= 0) {
-                        stop();
-                        cleanupGamePane();
-                        System.out.println("AnimationTimer dừng do hết thời gian.");
-                        return;
-                    }
+                if (remainingTime <= 0) {
+                    stop();
+                    cleanupGamePane();
+                    System.out.println("AnimationTimer dừng do hết thời gian.");
+                    return;
+                }
 
-                    if (!hasReachedGround) {
-                        System.out.println("VY: " + currentFallingTrash.getVy());
-                        // Sử dụng Vy đã thiết lập
-                        currentFallingTrash.setY(currentFallingTrash.getY() + currentFallingTrash.getVy());
-                        trashView.setLayoutY(currentFallingTrash.getY());
-                        trashOrderLabel.setLayoutY(currentFallingTrash.getY() - 40);
-                        if (trashView.getLayoutY() > redLine.getLayoutY() - trashView.getFitWidth() - (redLine.getEndY() - redLine.getStartY())) {
-                            hasReachedGround = true;
-                            System.out.println("true Ok");
-                            System.out.println("TD: " + currentFallingTrash);
-                            try {
-                                sendRemoveTrashRemove();
-                                System.out.println("Trash has reached the ground.");
-                                gamePane.getChildren().remove(trashView);
-                                gamePane.getChildren().remove(trashOrderLabel);
-                                currentFallingTrash = null;
-                                spawnNextTrash();
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
+                if (!hasReachedGround) {
+
+                    currentFallingTrash.setY(currentFallingTrash.getY() + currentFallingTrash.getVy());
+                    trashView.setLayoutY(currentFallingTrash.getY());
+                    trashOrderLabel.setLayoutY(currentFallingTrash.getY() - 40);
+
+                    if (trashView.getLayoutY() > redLine.getLayoutY() - trashView.getFitWidth() - (redLine.getEndY() - redLine.getStartY())) {
+                        hasReachedGround = true;
+                        System.out.println("Trash đã chạm đất.");
+
+                        try {
+                            sendRemoveTrashRemove();
+                            gamePane.getChildren().remove(trashView);
+                            gamePane.getChildren().remove(trashOrderLabel);
+                            currentFallingTrash = null;
+                            spawnNextTrash();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
                         }
                     }
                 }
             }
-        }.start();
+        };
+
+        currentAnimationTimer.start();
     }
 
+    // Chuyển sang trang hiển thị điểm
+    private void loadShowScorePage() throws IOException {
+        System.out.println("Thời gian đã hết. Chuyển sang trang mới.");
+        List<Object> data = new ArrayList<>();
+        LocalDateTime currentTime = LocalDateTime.now();
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedTime = currentTime.format(formatter);
+        session.setEndTime(formattedTime);
 
-//    private void startTrashFallAnimation() {
-//        System.out.println("TRAASSH1: " + currentFallingTrash);
-//        currentFallingTrash.setVy(currentFallingTrash.getVy());
-//        trashView = new ImageView(new Image(getClass().getResource(currentFallingTrash.getImg()).toString()));
-//        trashView.setFitWidth(30);
-//        trashView.setFitHeight(30);
-//        trashView.setLayoutX(currentFallingTrash.getX());
-//        trashView.setLayoutY(currentFallingTrash.getY());
-//        trashOrderLabel.setLayoutX(currentFallingTrash.getX() - (Math.abs(trashView.getFitWidth() - trashOrderLabel.getWidth()))/2);
-//
-//        currentFallingTrash.setX(currentFallingTrash.getX());
-//        currentFallingTrash.setY(0);
-//
-//        if (!gamePane.getChildren().contains(trashView)) {
-//            trashView.setId(String.valueOf(order));
-//            gamePane.getChildren().add(trashView);
-//        }
-//        new AnimationTimer() {
-//            private boolean hasReachedGround = false;
-//
-//            @Override
-//            public void handle(long now) {
-//                synchronized (this) {
-//                    if (remainingTime <= 0) {
-//                        stop();
-//                        cleanupGamePane();
-//                        System.out.println("AnimationTimer dừng do hết thời gian.");
-//                        return;
-//                    }
-//
-//                    if (!hasReachedGround) {
-//                        System.out.println("VY: " + currentFallingTrash.getVy());
-//                        currentFallingTrash.setY(currentFallingTrash.getY() + currentFallingTrash.getVy());
-//                        trashView.setLayoutY(currentFallingTrash.getY());
-//                        trashOrderLabel.setLayoutY(currentFallingTrash.getY() - 40);
-//                        if (trashView.getLayoutY()  > redLine.getLayoutY() - trashView.getFitWidth() - (redLine.getEndY() - redLine.getStartY())){
-//                            hasReachedGround = true;
-//                            System.out.println("true Ok");
-//                            System.out.println("TD: " + currentFallingTrash);
-//                            try {
-//                                sendRemoveTrashRemove();
-//                                System.out.println("Trash has reached the ground.");
-//                                gamePane.getChildren().remove(trashView);
-//                                gamePane.getChildren().remove(trashOrderLabel);
-//                                currentFallingTrash = null;
-//                                spawnNextTrash();
-//                            } catch (IOException e) {
-//                                throw new RuntimeException(e);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }.start();
-//    }
+        gameSessionPlayerCreate.setScore(scoreUser1);
+        gameSessionPlayerJoin.setScore(scoreUser2);
 
+        data.add(session);
+        data.add(gameSessionPlayerCreate);
+        data.add(gameSessionPlayerJoin);
+
+        Request request = new Request(RequestStatus.SHOW_SCORE_USER, data);
+        System.out.println("REQUEST TO SERVER SHOW_SCORE_USER: " + request);
+        client.sendToServer(request);
+    }
 }

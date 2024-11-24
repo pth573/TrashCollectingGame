@@ -71,6 +71,10 @@ public class Router {
                 System.out.println("Handling update score UI request");
                 return GameSessionController.updateScoreUI(request.getDataFromClient(), client, clientMap);
             }
+            case RequestStatus.UPDATE_SCORE_UI_1 -> {
+                System.out.println("Handling update score UI 1 request");
+                return GameSessionController.updateScoreUI_1(request.getDataFromClient(), client, clientMap);
+            }
             case RequestStatus.UPDATE_TRASH_UI -> {
 //                System.out.println("Handing update trash UI request");
                 return GameSessionController.updateTrashUI(request.getDataFromClient(), client, clientMap);

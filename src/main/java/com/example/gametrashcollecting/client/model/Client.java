@@ -9,11 +9,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -29,6 +26,7 @@ public class Client implements Serializable {
     private Socket socket;
     private User user;
     private Stage stage;
+    private StartGame2Controller startGame2Controller;
     private StartGameController startGameController;
     private ResultController resultController;
     private HistoryController historyController;
@@ -801,52 +799,299 @@ public class Client implements Serializable {
                                     System.out.println(trashItem);
                                 }
 
-                                Platform.runLater(() -> {
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gametrashcollecting/game-round-map1.fxml"));
-                                    Parent root = null;
-                                    try {
-                                        root = loader.load();
-                                        startGameController = loader.getController();
+                                if(gameSession.getRound().getId() == 1){
+                                    Platform.runLater(() -> {
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gametrashcollecting/game-round-map1.fxml"));
+                                        Parent root = null;
+                                        try {
+                                            root = loader.load();
+                                            startGameController = loader.getController();
 //                                        startGameController.initialize();
 
-                                        startGameController.setClient(Client.this);
-                                        startGameController.setUserCreateRoom(userCreateRoom);
-                                        startGameController.setUserJoinRoom(userJoinRoom);
-                                        startGameController.setSession(gameSession);
-                                        startGameController.setGameSessionPlayer(gameSessionPlayerCreate);
-                                        startGameController.setGameSessionPlayerJoin(gameSessionPlayerJoin);
-                                        startGameController.setTrashItemList(trashItemList);
-                                        startGameController.updateUIStartGame();
-                                        if(userCreateRoom.getUsername().equals(user.getUsername())){
+                                            startGameController.setClient(Client.this);
+                                            startGameController.setUserCreateRoom(userCreateRoom);
+                                            startGameController.setUserJoinRoom(userJoinRoom);
+                                            startGameController.setSession(gameSession);
+                                            startGameController.setGameSessionPlayer(gameSessionPlayerCreate);
+                                            startGameController.setGameSessionPlayerJoin(gameSessionPlayerJoin);
+                                            startGameController.setTrashItemList(trashItemList);
+                                            startGameController.updateUIStartGame();
+                                            if(userCreateRoom.getUsername().equals(user.getUsername())){
+                                                data.add(userCreateRoom);
+                                            }
+                                            else {
+                                                data.add(userJoinRoom);
+                                            }
+                                            startGameController.setDataToClient2(data);
+                                            Scene gameScene = new Scene(root);
+                                            startGameController.setGameScene(gameScene);
+                                            stage.setScene(gameScene);
+                                            stage.show();
+
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                    });
+                                }
+                                else if(gameSession.getRound().getId() == 2){
+                                    Platform.runLater(() -> {
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gametrashcollecting/game-round-map2.fxml"));
+                                        Parent root = null;
+                                        try {
+                                            root = loader.load();
+                                            startGame2Controller = loader.getController();
+                                            startGame2Controller.setClient(Client.this);
+                                            startGame2Controller.setUserCreateRoom(userCreateRoom);
+                                            startGame2Controller.setUserJoinRoom(userJoinRoom);
+                                            startGame2Controller.setSession(gameSession);
+                                            startGame2Controller.setGameSessionPlayer(gameSessionPlayerCreate);
+                                            startGame2Controller.setGameSessionPlayerJoin(gameSessionPlayerJoin);
+                                            startGame2Controller.setTrashItemList(trashItemList);
+                                            startGame2Controller.updateUIStartGame();
+                                            if(userCreateRoom.getUsername().equals(user.getUsername())){
 //                                            startGameController.setThisUser(userCreateRoom);
-                                            data.add(userCreateRoom);
-                                        }
-                                        else {
+                                                data.add(userCreateRoom);
+                                            }
+                                            else {
 //                                            startGameController.setThisUser(userJoinRoom);
-                                            data.add(userJoinRoom);
-                                        }
+                                                data.add(userJoinRoom);
+                                            }
 
-                                        startGameController.setDataToClient2(data);
+                                            startGame2Controller.setDataToClient2(data);
 
 //                                        startGameController.initialize();
 
 
-                                        Scene gameScene = new Scene(root);
-                                        startGameController.setGameScene(gameScene);
-                                        stage.setScene(gameScene);
-                                        stage.show();
+                                            Scene gameScene = new Scene(root);
+                                            startGame2Controller.setGameScene(gameScene);
+                                            stage.setScene(gameScene);
+                                            stage.show();
 
-                                    } catch (IOException e) {
-                                        throw new RuntimeException(e);
-                                    }
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
 //                                    Scene gameScene = new Scene(root);
 //                                    stage.setScene(gameScene);
 //                                    stage.show();
-                                });
+                                    });
+                                }
+//
+//
+//                                Platform.runLater(() -> {
+//                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gametrashcollecting/game-round-map1.fxml"));
+//                                    Parent root = null;
+//                                    try {
+//                                        root = loader.load();
+//                                        startGame2Controller = loader.getController();
+////                                        startGameController.initialize();
+//
+//                                        startGame2Controller.setClient(Client.this);
+//                                        startGame2Controller.setUserCreateRoom(userCreateRoom);
+//                                        startGame2Controller.setUserJoinRoom(userJoinRoom);
+//                                        startGame2Controller.setSession(gameSession);
+//                                        startGame2Controller.setGameSessionPlayer(gameSessionPlayerCreate);
+//                                        startGame2Controller.setGameSessionPlayerJoin(gameSessionPlayerJoin);
+//                                        startGame2Controller.setTrashItemList(trashItemList);
+//                                        startGame2Controller.updateUIStartGame();
+//                                        if(userCreateRoom.getUsername().equals(user.getUsername())){
+////                                            startGameController.setThisUser(userCreateRoom);
+//                                            data.add(userCreateRoom);
+//                                        }
+//                                        else {
+////                                            startGameController.setThisUser(userJoinRoom);
+//                                            data.add(userJoinRoom);
+//                                        }
+//
+//                                        startGame2Controller.setDataToClient2(data);
+//
+////                                        startGameController.initialize();
+//
+//
+//                                        Scene gameScene = new Scene(root);
+//                                        startGame2Controller.setGameScene(gameScene);
+//                                        stage.setScene(gameScene);
+//                                        stage.show();
+//
+//                                    } catch (IOException e) {
+//                                        throw new RuntimeException(e);
+//                                    }
+////                                    Scene gameScene = new Scene(root);
+////                                    stage.setScene(gameScene);
+////                                    stage.show();
+//                                });
                             } else {
                                 gameSessionPlayerJoin = null;
                                 gameSessionPlayerCreate = null;
                                 gameSession = null;
+                                userJoinRoom = null;
+                                userCreateRoom = null;
+                            }
+                        }
+                        else if(statusResponse.equals(Status.START_GAME_UPDATE_CLIENT_2_SUCCESS)){
+                            System.out.println("START_GAME_UPDATE_CLIENT_2_SUCCESS");
+                            GameSession gameSession;
+                            User userCreateRoom;
+                            User userJoinRoom;
+                            GameSessionPlayer gameSessionPlayerCreate;
+                            GameSessionPlayer gameSessionPlayerJoin;
+                            List<TrashItem> trashItemList = new ArrayList<>();
+                            User thisUser;
+                            int score1;
+                            int score2;
+
+                            if (responseFromServer.getDataToClient() instanceof List) {
+                                List<?> outerList = (List<?>) responseFromServer.getDataToClient();
+                                System.out.println("OuterList Sz:" + outerList.size());
+
+                                Object firstElement = outerList.get(0);
+                                if (firstElement instanceof GameSession) {
+                                    gameSession = (GameSession) firstElement;
+                                } else {
+                                    gameSession = new GameSession();
+                                }
+                                Object secondElement = outerList.get(1);
+                                if (secondElement instanceof User) {
+                                    userCreateRoom = (User) secondElement;
+                                } else {
+                                    userCreateRoom = new User();
+                                }
+                                Object thirdElement = outerList.get(2);
+                                if (thirdElement instanceof User) {
+                                    userJoinRoom = (User) thirdElement;
+                                } else {
+                                    userJoinRoom = new User();
+                                }
+                                Object forthElement = outerList.get(3);
+                                if (forthElement instanceof GameSessionPlayer) {
+                                    gameSessionPlayerCreate = (GameSessionPlayer) forthElement;
+                                } else {
+                                    gameSessionPlayerCreate = new GameSessionPlayer();
+                                }
+                                Object fifthElement = outerList.get(4);
+                                if (fifthElement instanceof GameSessionPlayer) {
+                                    gameSessionPlayerJoin = (GameSessionPlayer) fifthElement;
+                                } else {
+                                    gameSessionPlayerJoin = new GameSessionPlayer();
+                                }
+                                Object sixthElement = outerList.get(5);
+                                if (sixthElement instanceof List<?>) {
+                                    List<?> innerList = (List<?>) sixthElement;
+                                    System.out.println("InnerList:" + innerList.size());
+                                    for (Object trashItem : innerList) {
+                                        if (trashItem instanceof TrashItem) {
+                                            trashItemList.add((TrashItem) trashItem);
+                                        }
+                                    }
+                                }
+                                Object seventh = outerList.get(6);
+                                if (seventh instanceof User) {
+                                    thisUser = (User) seventh;
+                                } else {
+                                    thisUser = new User();
+                                }
+                                Object score = outerList.get(7);
+                                if (score instanceof Integer) {
+                                    score1 = (Integer) score;
+                                } else {
+                                    score1 = 0;
+                                }
+                                Object scoree = outerList.get(8);
+                                if (scoree instanceof Integer) {
+                                    score2 = (Integer) scoree;
+                                } else {
+                                    score2 = 0;
+                                }
+
+                                System.out.println("SCORE1 FROM SERVER: " + score1);
+                                System.out.println("SCORE2 FROM SERVER: " + score2);
+
+                                Platform.runLater(() -> {
+                                    System.out.println("HELLLLiiiiiii");
+                                    if(thisUser.getUsername().equals(userCreateRoom.getUsername())){
+                                        System.out.println("HELLLLiiiiiii111111");
+                                        System.out.println("UPDATE UI SCORE OTHER (2):" + score2);
+                                        startGame2Controller.setScoreUser2(score2);
+                                        startGame2Controller.updatePointUser2(score2);
+
+                                    }
+                                    else if(thisUser.getUsername().equals(userJoinRoom.getUsername())){
+                                        System.out.println("HELLLLiiiiiii222222");
+                                        System.out.println("UPDATE UI SCORE OTHER (1):" + score1);
+                                        startGame2Controller.setScoreUser2(score1);
+                                        startGame2Controller.updatePointUser2(score1);
+                                    }
+                                });
+                            } else {
+                                thisUser = null;
+                                score1 = 0;
+                                score2 = 0;
+                                gameSessionPlayerJoin = null;
+                                gameSessionPlayerCreate = null;
+                                gameSession = null;
+                                userJoinRoom = null;
+                                userCreateRoom = null;
+                            }
+                        }
+
+                        else if(statusResponse.equals(Status.UPDATE_SCORE_UI_SUCCESS)){
+                            System.out.println("UPDATE_SCORE_UI_SUCCESS");
+                            User userCreateRoom;
+                            User userJoinRoom;
+                            User thisUser;
+                            int score;
+
+                            if (responseFromServer.getDataToClient() instanceof List) {
+                                List<?> outerList = (List<?>) responseFromServer.getDataToClient();
+
+                                Object secondElement = outerList.get(0);
+                                if (secondElement instanceof User) {
+                                    userCreateRoom = (User) secondElement;
+                                } else {
+                                    userCreateRoom = new User();
+                                }
+                                System.out.println("1: " + userCreateRoom);
+
+                                Object thirdElement = outerList.get(1);
+                                if (thirdElement instanceof User) {
+                                    userJoinRoom = (User) thirdElement;
+                                } else {
+                                    userJoinRoom = new User();
+                                }
+                                System.out.println("2: " + userJoinRoom);
+
+                                Object seventh = outerList.get(2);
+                                if (seventh instanceof User) {
+                                    thisUser = (User) seventh;
+                                } else {
+                                    thisUser = new User();
+                                }
+                                System.out.println("5: " + thisUser);
+
+                                Object x = outerList.get(3);
+                                if(x instanceof Integer) {
+                                    score =  (Integer) x;
+                                } else {
+                                    score = 0;
+                                }
+                                System.out.println("SCORE FROM SERVER: " + score);
+                                Platform.runLater(() -> {
+                                    System.out.println("HELLLLiiiiiii");
+                                    if(user.getUsername().equals(userCreateRoom.getUsername())){
+                                        System.out.println("HELLLLiiiiiii111111");
+                                        System.out.println("UPDATE UI SCORE OTHER (2):" + score);
+                                        startGame2Controller.setScoreUser2(score);
+                                        startGame2Controller.updatePointUser2(score);
+                                    }
+                                    else if(user.getUsername().equals(userJoinRoom.getUsername())){
+                                        System.out.println("HELLLLiiiiiii222222");
+                                        System.out.println("UPDATE UI SCORE OTHER (1):" + score);
+                                        startGame2Controller.setScoreUser1(score);
+                                        startGame2Controller.updatePointUser1(score);
+                                    }
+                                });
+                            } else {
+                                thisUser = null;
+                                score = 0;
                                 userJoinRoom = null;
                                 userCreateRoom = null;
                             }
@@ -975,9 +1220,8 @@ public class Client implements Serializable {
                                 userCreateRoom = null;
                             }
                         }
-
-                        else if(statusResponse.equals(Status.UPDATE_SCORE_UI_SUCCESS)){
-                            System.out.println("UPDATE_SCORE_UI_SUCCESS");
+                        else if(statusResponse.equals(Status.UPDATE_SCORE_UI_1_SUCCESS)){
+                            System.out.println("UPDATE_SCORE_UI_1_SUCCESS");
                             User userCreateRoom;
                             User userJoinRoom;
                             User thisUser;
@@ -1016,42 +1260,23 @@ public class Client implements Serializable {
                                 } else {
                                     score = 0;
                                 }
-//                                System.out.println("CreateRoom: ");
-//                                System.out.println(userCreateRoom.getUsername());
-//                                System.out.println("JoinRoom: ");
-//                                System.out.println(userJoinRoom.getUsername());
-//                                System.out.println(gameSession.getRound());
-
                                 System.out.println("SCORE FROM SERVER: " + score);
                                 Platform.runLater(() -> {
                                     System.out.println("HELLLLiiiiiii");
                                     if(user.getUsername().equals(userCreateRoom.getUsername())){
                                         System.out.println("HELLLLiiiiiii111111");
                                         System.out.println("UPDATE UI SCORE OTHER (2):" + score);
+
                                         startGameController.setScoreUser2(score);
                                         startGameController.updatePointUser2(score);
                                     }
                                     else if(user.getUsername().equals(userJoinRoom.getUsername())){
                                         System.out.println("HELLLLiiiiiii222222");
                                         System.out.println("UPDATE UI SCORE OTHER (1):" + score);
+
                                         startGameController.setScoreUser1(score);
                                         startGameController.updatePointUser1(score);
                                     }
-
-//                                    startGameController.setScoreUser1(score1);
-//                                    startGameController.setScoreUser2(score2);
-//                                    System.out.println("Score1 first: " + score1);
-//                                    System.out.println("Score2 first: " + score2);
-//                                    System.out.println("HELLLLiiiiiii");
-//                                    if(thisUser.getUsername().equals(userCreateRoom.getUsername())){
-//                                        System.out.println("HELLLLiiiiiii111111");
-//                                        startGameController.updatePointUser1(score1);
-//
-//                                    }
-//                                    else if(thisUser.getUsername().equals(userJoinRoom.getUsername())){
-//                                        System.out.println("HELLLLiiiiiii222222");
-//                                        startGameController.updatePointUser2(score2);
-//                                    }
                                 });
                             } else {
                                 thisUser = null;
@@ -1329,7 +1554,7 @@ public class Client implements Serializable {
                                         resultController.setThisUser(Client.this.user);
                                         resultController.setGameSessionPlayer(gameSessionPlayerCreate);
                                         resultController.setGameSessionPlayerJoin(gameSessionPlayerJoin);
-                                        resultController.setMinuteContinue(7);
+                                        resultController.setMinuteContinue(5);
                                         resultController.initial();
                                         System.out.println("SESSION: " + session);
                                         System.out.println("ROUND: " + session.getRound());

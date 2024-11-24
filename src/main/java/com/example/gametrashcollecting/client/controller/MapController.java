@@ -155,7 +155,6 @@ public class MapController {
     }
 
     public void loadRounds(List<GameRound> rounds) {
-        // Xóa nội dung cũ trong hboxMaps nếu có
         hboxMaps.getChildren().clear();
 
         for (GameRound round : rounds) {
@@ -167,17 +166,14 @@ public class MapController {
     private VBox createRoundBox(GameRound round) {
         VBox vbox = new VBox();
 
-        // Label cho tên map
         Label nameLabel = new Label(round.getRoundName());
         nameLabel.setStyle("-fx-font-weight: 100px;");
         nameLabel.setFont(new javafx.scene.text.Font("Elephant", 20));
         nameLabel.setAlignment(javafx.geometry.Pos.CENTER);
 
-        // Label cho thời gian
         Label timeLabel = new Label("Time: " + round.getTimeLimit() + "s");
         timeLabel.setAlignment(javafx.geometry.Pos.CENTER);
 
-        // ImageView cho hình ảnh map
         ImageView imageView = new ImageView();
         imageView.setFitHeight(164);
         imageView.setFitWidth(164);
@@ -193,7 +189,6 @@ public class MapController {
 
         chooseButton.setOnAction(e -> chooseRound(round));
 
-        // Thêm tất cả các phần tử vào VBox
         vbox.getChildren().addAll(nameLabel, timeLabel, imageView, chooseButton);
         vbox.setSpacing(10);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);

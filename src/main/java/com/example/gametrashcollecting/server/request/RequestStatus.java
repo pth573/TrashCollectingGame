@@ -22,6 +22,7 @@ public enum RequestStatus implements Serializable {
     UPDATE_COLOR_UI("Update color UI"),
     UPDATE_TRASH_UI("Update trash UI"),
     UPDATE_SCORE_UI("Update score UI"),
+    UPDATE_SCORE_UI_1("Update score UI 1"),
     SHOW_SCORE_USER("Show score user"),
     GET_LIST_HISTORY_SESSION("Get list history session"),
     SHOW_USER_LIST("Show user list"),
