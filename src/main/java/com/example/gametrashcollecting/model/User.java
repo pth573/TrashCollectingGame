@@ -16,6 +16,7 @@ public class User implements Serializable {
     String img;
 //    List<User> userListFriend;
 
+
     public User(){}
 
     public User(String username, String password){

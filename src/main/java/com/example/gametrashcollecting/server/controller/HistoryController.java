@@ -39,22 +39,5 @@ public class HistoryController {
         GameSessionPlayerDAO gameSessionPlayerDAO = new GameSessionPlayerDAO();
         List<HistoryRecord> historyRecordList = gameSessionPlayerDAO.getHistoryByUserId(thisUser.getId());
         return new ResponseStatus(Status.GET_LIST_HISTORY_SESSION_SUCCESS, historyRecordList);
-
-
-        //        if(dataFromClient instanceof User) {
-//            User user = (User) dataFromClient;
-//            System.out.println("Find friend of user:" + user.getUsername() + " " + user.getPassword());
-//            FriendshipDAO friendshipDAO = new FriendshipDAO();
-//            List<User> listFriendUser = friendshipDAO.findFriendOfUser(user);
-//            if(listFriendUser.size() > 0) {
-//                return new ResponseStatus(Status.FIND_FRIEND_OF_USER_SUCCESS, listFriendUser);
-//            }
-//            else {
-//                return new ResponseStatus(Status.FIND_FRIEND_OF_USER_FAIL, "User dont have any friend");
-//            }
-//        }
-//        else {
-//            return new ResponseStatus(Status.FIND_FRIEND_OF_USER_FAIL, "Data from client is not a User");
-//        }
     }
 }

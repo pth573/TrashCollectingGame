@@ -34,6 +34,7 @@ public class Client implements Serializable {
     private HistoryController historyController;
     private RoomController roomController;
      private RoomController roomController2;
+     private UserController userController;
 
 
     public Client(String serverAddress, int port, Stage stage) {
@@ -1369,6 +1370,34 @@ public class Client implements Serializable {
                                     historyController.setHistoryData(historyRecordList);
                                     historyController.setClient(Client.this);
                                     historyController.setThisUser(Client.this.user);
+
+                                    Scene gameScene = new Scene(root);
+                                    stage.setScene(gameScene);
+                                    stage.show();
+
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+                        }
+                        else if(statusResponse.equals(Status.SHOW_USER_LIST_SUCCESS)){
+                            List<User> userList;
+                            if (responseFromServer.getDataToClient() instanceof List) {
+                                userList = (List<User>) responseFromServer.getDataToClient();
+                            } else {
+                                userList = new ArrayList<>();
+                            }
+
+
+                            Platform.runLater(() -> {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gametrashcollecting/user-list.fxml"));
+                                Parent root = null;
+                                try {
+                                    root = loader.load();
+                                    userController = loader.getController();
+                                    userController.setUserData(userList);
+                                    userController.setClient(Client.this);
+                                    userController.setThisUser(Client.this.user);
 
                                     Scene gameScene = new Scene(root);
                                     stage.setScene(gameScene);

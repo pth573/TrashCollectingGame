@@ -17,6 +17,7 @@ public class UserDAO {
     private static final String UPDATE_USER_STATUS = "UPDATE user SET status = ? WHERE id = ?";
     private static final String UPDATE_USER_CURRENT_ROOM = "UPDATE user SET currentRoomId = ? WHERE userId = ?";
     private static final String UPDATE_USER_TOTAL_POINT = "UPDATE user SET totalPoints = ? WHERE userId = ?";
+    private static final String FIND_ALL_USERS = "SELECT * FROM user";
     private static final String SAVE_USER = "INSERT INTO user (username, password, status, totalPoints, lastLogin) VALUES (?, ?, ?, ?, ?)";
     private static final String DELETE_USER = "DELETE FROM user WHERE id = ?";
     private static final String GET_USER_BY_ID = "SELECT * FROM user WHERE userId = ?";
@@ -126,6 +127,25 @@ public class UserDAO {
             user.setStatus(UserStatus.valueOf(rs.getString("status")));
             user.setLastLogin(rs.getString("lastLogin"));
             user.setCurrentRoomId(rs.getInt("userId"));
+            users.add(user);
+        }
+        return users;
+    }
+
+    public List<User> findAll() throws SQLException {
+        Connection conn = dbManager.getConnection();
+        PreparedStatement ps = conn.prepareStatement(FIND_ALL_USERS);
+        ResultSet rs = ps.executeQuery();
+        List<User> users = new ArrayList<>();
+        while (rs.next()) {
+            User user = new User();
+            user.setId(rs.getInt("userId"));
+            user.setUsername(rs.getString("username"));
+//            user.setPassword(rs.getString("password"));
+            user.setTotalPoints(rs.getInt("totalPoints"));
+            user.setStatus(UserStatus.valueOf(rs.getString("status")));
+            user.setLastLogin(rs.getString("lastLogin"));
+            user.setCurrentRoomId(rs.getInt("currentRoomId"));
             users.add(user);
         }
         return users;

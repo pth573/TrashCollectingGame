@@ -73,4 +73,14 @@ public class UserController {
             return new ResponseStatus(Status.REGISTER_FAIL, "User register successful");
         }
     }
+
+    public static ResponseStatus getUserList(Object dataFromClient, Client client, Map<String, Client> clientMap) throws SQLException {
+        User thisUser = new User();
+        if(dataFromClient instanceof User) {
+            thisUser = (User) dataFromClient;
+        }
+        UserDAO userDAO1 = new UserDAO();
+        List<User> userList = userDAO1.findAll();
+        return new ResponseStatus(Status.SHOW_USER_LIST_SUCCESS, userList);
+    }
 }

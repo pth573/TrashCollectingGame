@@ -130,6 +130,13 @@ public class MainScreenController {
 
 
     @FXML
+    public void showUserList(MouseEvent event) throws IOException {
+        Request request = new Request(RequestStatus.SHOW_USER_LIST, thisUser);
+        client.sendToServer(request);
+    }
+
+
+    @FXML
     private void clickOnFindRoomBtn(ActionEvent event) throws IOException {
 //        List<User> data = new ArrayList<>();
         User user = client.getUser();

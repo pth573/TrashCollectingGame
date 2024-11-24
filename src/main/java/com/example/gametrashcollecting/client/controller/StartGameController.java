@@ -313,7 +313,16 @@ public class StartGameController {
     public void updateUIStartGame() throws IOException {
 //        scoreUser1 = 0;
 //        scoreUser2 = 0;
-        remainingTime = session.getRound().getTimeLimit();
+        if(session.getRound().getDifficulLevel().equals(Level.EASY)){
+            remainingTime = session.getRound().getTimeLimit();
+        }
+        else if(session.getRound().getDifficulLevel().equals(Level.HARD)){
+            remainingTime = session.getRound().getTimeLimit() - 10;
+        }
+        else {
+            remainingTime = session.getRound().getTimeLimit() - 5;
+        }
+//        remainingTime = session.getRound().getTimeLimit();
         updateRoomUI();
         updatePoint();
         updateUserUI();

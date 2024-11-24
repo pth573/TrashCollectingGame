@@ -24,6 +24,7 @@ public enum RequestStatus implements Serializable {
     UPDATE_SCORE_UI("Update score UI"),
     SHOW_SCORE_USER("Show score user"),
     GET_LIST_HISTORY_SESSION("Get list history session"),
+    SHOW_USER_LIST("Show user list"),
     ;
 
     private String requestStatus;

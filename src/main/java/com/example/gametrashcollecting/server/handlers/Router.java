@@ -91,6 +91,10 @@ public class Router {
                 System.out.println("Handling get list history session request");
                 return HistoryController.getListHistorySession(request.getDataFromClient(), client, clientMap);
             }
+            case RequestStatus.SHOW_USER_LIST -> {
+                System.out.println("Handling show user list");
+                return UserController.getUserList(request.getDataFromClient(), client, clientMap);
+            }
             default -> {
                 System.out.println("Unknown request status");
                 return null;

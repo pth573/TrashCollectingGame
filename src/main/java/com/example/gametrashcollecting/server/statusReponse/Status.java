@@ -47,6 +47,8 @@ public enum Status {
     SHOW_SCORE_USER_FAIL("Show Score User Fail"),
     GET_LIST_HISTORY_SESSION_SUCCESS("Get List History Session Success"),
     GET_LIST_HISTORY_SESSION_FAIL("Get List History Session Fail"),
+    SHOW_USER_LIST_SUCCESS("SHOW User List Success"),
+    SHOW_USER_LIST_FAIL("SHOW User List Fail"),
     OTHER("Dont do anything")
     ;
 

@@ -32,6 +32,7 @@ module com.example.gametrashcollecting {
 
     opens com.example.gametrashcollecting.client.model to javafx.base;
 
+    opens com.example.gametrashcollecting.model to javafx.base;
 
 
 //    requires javafx.graphics;
